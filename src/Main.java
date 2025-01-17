@@ -4,13 +4,13 @@ import service.RedirectService;
 
 public class Main {
     public static void main(String[] args) {
-        URLShortService shortenerService = new URLShortService();
-        RedirectService redirectService = new RedirectService(shortenerService);
+        URLShortService shortService = new URLShortService();
+        RedirectService redirectService = new RedirectService(shortService);
 
         User user = new User();
         System.out.println("UUID пользователя: " + user.getUuid());
         
-        String shortURL = shortenerService.shortenURL("https://www.baeldung.com/java-9-http-client", user.getUuid(), 5);
+        String shortURL = shortService.shortenURL("https://www.baeldung.com/java-9-http-client", user.getUuid(), 5);
         System.out.println("Короткая ссылка: " + shortURL);
         System.out.println("Попытки перехода по ссылке:");
 
@@ -20,6 +20,6 @@ public class Main {
         }
 
         System.out.println("\nСтатистика ссылки");
-        shortenerService.showLinkStats(shortURL);
+        shortService.showLinkStats(shortURL);
     }
 }
